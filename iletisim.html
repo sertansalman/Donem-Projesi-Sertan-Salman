@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeaea;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background: #282424;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background: #b71c1c;
+        }
+        .container {
+            margin-left: 220px;
+            padding: 20px;
+            width: calc(100% - 240px);
+            max-width: 800px;
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        .kartvizit img {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .muhtar-bilgi {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .footer img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">🏠 Ana Sayfa</a></li>
+            <li><a href="ürünler.html">🛒 Ürünler</a></li>
+            <li><a href="galeri.html">🖼️ Galeri</a></li>
+            <li><a href="duyurular.html">📢 Duyurular</a></li>
+            <li><a href="iletisim.html">📞 İletişim</a></li>
+            <li><a href="hakkımızda.html">ℹ️ Hakkımızda</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>İletişim</h2>
+
+        <div class="muhtar-bilgi">
+            <h3>BÜYÜKMAHAL KÖYÜ MUHTARI</h3>
+            <p>cemalettin DOĞANYİĞİT</p>
+            <p>TEL: 0538 *** ** **</p>
+        </div>
+
+        <div class="kartvizit">
+            <img src="img/DOGRUER TURİZİM (1).png" alt="Devrim Doğruer Kartvizit">
+        </div>
+        <div class="kartvizit">
+            <img src="img/ALTINOK TURİZİM.png" alt="Serhat Altınok Kartvizit">
+        </div>
+
+        <div class="map">
+            <h3>Köyümüzün Konumu</h3>
+            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=34.9400%2C39.9500%2C34.9550%2C39.9600&layer=mapnik" allowfullscreen></iframe>
+        </div>
+
+        <div class="footer">
+            <img src="img/sertansalmanlogo.png" alt="Kendi Logom">
+        </div>
+    </div>
+</body>
+</html>

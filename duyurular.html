@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duyurular</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeaea;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background: #282424;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background: #b71c1c;
+        }
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            padding-left: 220px;
+            text-align: center;
+        }
+        .announcement-box {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+        .announcement-box:hover {
+            transform: scale(1.05);
+        }
+        .announcement-box img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .announcement-box h3 {
+            margin: 0;
+            color: #333;
+        }
+        .announcement-box p {
+            color: #666;
+            font-size: 16px;
+        }
+        .right-panel {
+            width: 250px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            right: 0;
+            top: 0;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">🏠 Ana Sayfa</a></li>
+            <li><a href="ürünler.html">🛒 Ürünler</a></li>
+            <li><a href="galeri.html">🖼️ Galeri</a></li>
+            <li><a href="duyurular.html">📢 Duyurular</a></li>
+            <li><a href="iletisim.html">📞 İletişim</a></li>
+            <li><a href="hakkımızda.html">ℹ️ Hakkımızda</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Duyurular</h1>
+        <div class="announcement-box">
+            <h3>cem duyurusu</h3>
+            <p>köyümüzün gencleri cem ibadetini yerine getirmişlerdir </p>
+            <img src="img/cem duyuru.jpg" alt="cem iadeti ">
+        </div>
+        <div class="announcement-box">
+            <h3>Duyuru 2</h3>
+            <p>Köy pazarımızda yeni ürünler satışa sunulmuştur. Gelip ziyaret edebilirsiniz.</p>
+            <img src="img/duyuru2.jpg" alt="Pazar Görseli">
+        </div>
+        <div class="announcement-box">
+            <h3>Duyuru 3</h3>
+            <p>Elektrik kesintisi nedeniyle 27 Mart 2025 günü saat 10:00 - 16:00 arası bakım yapılacaktır.</p>
+            <img src="img/duyuru3.jpg" alt="Elektrik Kesintisi">
+        </div>
+        <div class="footer">
+            <img src="img/sertansalmanlogo.png" alt="Kendi Logom">
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <h3>hz.Aliden sözler</h3>
+        <p>"Dil pek keskin bir kılıçtır. Kan akıtmadan can yakar."
+            - Hz. Ali</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,114 @@
+/* Genel Sayfa Ayarları */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* Sayfanın Ana Konteyneri */
+.container {
+    display: flex;
+}
+
+/* Sol Menü */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: red;
+    position: fixed;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: green;
+}
+
+/* İçerik Alanı */
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Başlık */
+header h1 {
+    text-align: center;
+    color: red;
+}
+
+/* Hoş Geldiniz Bölümü */
+.welcome {
+    text-align: center;
+    margin-top: 50px;
+}
+.right-sidebar {
+    width: 200px;
+    background: rgba(0, 0, 0, 0.8); /* Hafif saydam siyah */
+    color: white;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow-y: auto;
+    border-left: 2px solid #fa0a0a;
+}
+
+.container {
+    width: calc(100% - 400px); /* Sol ve sağ sidebarı çıkarıyoruz */
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 20px;
+}
+.sag-menu {
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    width: 200px; 
+    height: 100vh; 
+    background-color: #f4f4f4; 
+    border-left: 2px solid #ccc; 
+    padding-top: 20px;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sag-menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sag-menu li {
+    margin-bottom: 20px;
+  }
+  
+  .sag-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sag-menu a:hover {
+    background-color: #007bff;
+    color: white;
+  }

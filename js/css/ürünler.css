@@ -1,0 +1,59 @@
+/* Genel stil */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #E53935; /* Kırmızı */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Ürün Listesi */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* Ürün Kutuları */
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product h2 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.product p {
+    font-size: 1em;
+    color: #777;
+}
+
+.price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2e7d32; /* Yeşil */
+    margin-top: 10px;
+}

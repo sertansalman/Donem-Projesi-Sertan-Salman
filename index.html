@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #aca6a6;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            background: #292424;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+        .sidebar ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background: #fa0a0a;
+            transform: scale(1.1);
+        }
+        .container {
+            width: calc(100% - 200px);
+            margin-left: 200px;
+            text-align: center;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgb(56, 52, 52);
+            color: white;
+        }
+        .header img {
+            width: 180px;
+            height: auto;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html">🏠 Ana Sayfa</a></li>
+            <li><a href="ürünler.html">🛒 Ürünler</a></li>
+            <li><a href="galeri.html">🖼️ Galeri</a></li>
+            <li><a href="duyurular.html">📢 Duyurular</a></li>
+            <li><a href="iletisim.html">📞 İletişim</a></li>
+            <li><a href="hakkımızda.html">ℹ️ Hakkımızda</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="header">
+            <img src="img/logo.png" alt="Köy Logosu">
+            <h1>Büyükmahal Köyü</h1>
+            <img src="img/logo.png" alt="Köy Logosu">
+        </div>
+        <div class="content">
+            <h2>Hoş Geldiniz</h2>
+            <p>Burası köyümüz hakkında bilgilerin, duyuruların ve fotoğrafların yer aldığı resmi web sitesidir.</p>
+            <p><em>"Toprağı işleyen, geleceği biçer."</em></p>
+            <p><em>"Toprağı işleyen, geleceği biçer."</em></p>
+            <p><em>"erkek dişi sorulmaz muhabbetin dilinde
+                hakk’ın yarattığı her şey yerli yerinde
+                bizim nazarımızda kadın erkek farkı yok
+                noksanlık eksiklik senin görüşlerinde." #hacıbektaşveli</em></p>
+            <p><em>“GÜÇLÜ OLAN , ÖFKESİNİ KONTROL EDEBİLENDİR "
+                #HZ. ALİ</em></p>
+        </div>
+        <div class="footer">
+            <img src="img/sertansalmanlogo.png" alt="Kendi Logom">
+        </div>
+    </div>
+    <div class="right-sidebar">
+        <h3>📅 Takvim</h3>
+        <div id="calendar"></div>
+        <h3>🌤️ Hava Durumu</h3>
+        <div id="weather">Hava durumu yükleniyor...</div>
+    </div>
+
+    <script>
+        // Basit takvim oluşturma
+        function loadCalendar() {
+            const date = new Date();
+            document.getElementById('calendar').innerHTML = date.toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        // Hava durumu API verileri (dummy data)
+        function loadWeather() {
+            document.getElementById('weather').innerHTML = "🌞 20°C - Güneşli";
+        }
+
+        loadCalendar();
+        loadWeather();
+    </script>
+</body>
+</html>
