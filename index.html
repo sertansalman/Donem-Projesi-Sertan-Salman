@@ -79,10 +79,39 @@
             width: 100px;
             height: auto;
         }
+        /* Hamburger Menü Stili */
+        .hamburger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: absolute;
+                left: -100%;
+                transition: left 0.3s;
+            }
+            .sidebar.active {
+                left: 0;
+            }
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+            }
+            .container {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="hamburger" id="hamburger">☰</div>
+    <div class="sidebar" id="sidebar">
         <ul>
             <li><a href="index.html">🏠 Ana Sayfa</a></li>
             <li><a href="ürünler.html">🛒 Ürünler</a></li>
@@ -101,43 +130,19 @@
         <div class="content">
             <h2>Hoş Geldiniz</h2>
             <p>Burası köyümüz hakkında bilgilerin, duyuruların ve fotoğrafların yer aldığı resmi web sitesidir.</p>
-            <p><em>ATATATÜRK'ÜN GENCLİĞE HİTABESİ</em></p>
-            <p><em>Ey Türk Gençliği!<br>
-            Birinci vazifen, Türk istiklâlini, Türk Cumhuriyetini, ilelebet, muhafaza ve müdafaa etmektir.<br>
-            Mevcudiyetinin ve istikbalinin yegâne temeli budur. Bu temel, senin, en kıymetli hazinendir. İstikbalde dahi, seni bu hazineden mahrum etmek isteyecek, dahilî ve haricî bedhahların olacaktır. Bir gün, İstiklâl ve Cumhuriyeti müdafaa mecburiyetine düşersen, vazifeye atılmak için, içinde bulunacağın vaziyetin imkân ve şerâitini düşünmeyeceksin! Bu imkân ve şerâit, çok nâmüsait bir mahiyette tezahür edebilir. İstiklâl ve Cumhuriyetine kastedecek düşmanlar, bütün dünyada emsali görülmemiş bir galibiyetin mümessili olabilirler. Cebren ve hile ile aziz vatanın, bütün kaleleri zaptedilmiş, bütün tersanelerine girilmiş, bütün orduları dağıtılmış ve memleketin her köşesi bilfiil işgal edilmiş olabilir. Bütün bu şerâitten daha elîm ve daha vahim olmak üzere, memleketin dahilinde, iktidara sahip olanlar gaflet ve dalâlet ve hattâ hıyanet içinde bulunabilirler. Hattâ bu iktidar sahipleri şahsî menfaatlerini, müstevlilerin siyasi emelleriyle tevhit edebilirler. Millet, fakr ü zaruret içinde harap ve bîtap düşmüş olabilir.<br>
-            Ey Türk istikbalinin evlâdı! İşte, bu ahval ve şerâit içinde dahi, vazifen; Türk İstiklâl ve Cumhuriyetini kurtarmaktır! Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!<br>
-            <br>
-            	
-
-                                                                                                                                            Mustafa Kemal Atatürk
-                                                                                                                                            20 Ekim 1927</em></p>
-         
         </div>
         <div class="footer">
             <img src="img/sertansalmanlogo.png" alt="Kendi Logom">
         </div>
     </div>
-    <div class="right-sidebar">
-        <h3>📅 Takvim</h3>
-        <div id="calendar"></div>
-        <h3>🌤️ Hava Durumu</h3>
-        <div id="weather">Hava durumu yükleniyor...</div>
-    </div>
-
     <script>
-        // Basit takvim oluşturma
-        function loadCalendar() {
-            const date = new Date();
-            document.getElementById('calendar').innerHTML = date.toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        }
+        const hamburger = document.getElementById('hamburger');
+        const sidebar = document.getElementById('sidebar');
 
-        // Hava durumu API verileri (dummy data)
-        function loadWeather() {
-            document.getElementById('weather').innerHTML = "🌞 20°C - Güneşli";
-        }
-
-        loadCalendar();
-        loadWeather();
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
     </script>
 </body>
 </html>
+
