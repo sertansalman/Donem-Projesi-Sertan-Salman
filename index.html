@@ -155,16 +155,137 @@
     </div>
 
         <div class="right-sidebar">
+   <div class="right-sidebar">
         <h3>📅 Takvim</h3>
         <div id="calendar"></div>
         <h3>🌤️ Hava Durumu</h3>
         <div id="weather">Hava durumu yükleniyor...</div>
     </div>
 
-
     <script>
+         
+        function loadCalendar() {
+            const date = new Date();
+            const currentMonth = date.getMonth();  // Güncel ay
+            const currentYear = date.getFullYear(); // Güncel yıl
+            const currentDay = date.getDate();  // Bugün hangi gün
+
+            // Ayın ilk günü hangi gün olduğunu bulma
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+            const startingDay = firstDayOfMonth.getDay();  // 0 - Pazar, 1 - Pazartesi, ...
+
+            // Ayın toplam gün sayısını bulma
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            // Takvimi oluşturacak HTML içeriğini başlatma
+            let calendarHtml = '';
+
+            // Haftanın günlerini ekleyelim (Pazar, Pazartesi, vb.)
+            const weekDays = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
+            weekDays.forEach(day => {
+                calendarHtml += `<div class="day-name">${day}</div>`;
+            });
+
+            // Ayın başında boş günleri ekleyelim (Örneğin: Ay Pazartesi başlıyorsa, önce 0,1,2,... boş bırakılır)
+            for (let i = 0; i < startingDay; i++) {
+                calendarHtml += '<div class="day"></div>';
+            }
+
+            // Ayın günlerini ekleyelim
+            for (let day = 1; day <= daysInMonth; day++) {
+                const isToday = day === currentDay; // Bugün mü?
+                calendarHtml += `<div class="day ${isToday ? 'today' : ''}">
+                                    <span class="day-number">${day}</span>
+                                  </div>`;
+            }
+
+            // Takvimi DOM'a ekleyelim
+            document.getElementById('calendar').innerHTML = calendarHtml;
+        }
+
+        // Takvimi yükle
         loadCalendar();
-        highlightToday();
+    
+        // Takvim oluşturma
+        function loadCalendar() {
+            const date = new Date();
+            const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+            const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+            const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+            
+            let calendarHTML = `<h4>${monthNames[date.getMonth()]} ${date.getFullYear()}</h4><div class="calendar">`;
+            let dayCounter = 1;
+
+            // İlk hafta boş günleri ekleme
+            for (let i = 0; i < firstDay; i++) {
+                calendarHTML += '<div></div>';
+            }
+
+            // Takvimi oluşturma
+            for (let i = firstDay; i < 7; i++) {
+                calendarHTML += `<div>${dayCounter}</div>`;
+                dayCounter++;
+            }
+
+            // Kalan günleri ekleme
+            while (dayCounter <= daysInMonth) {
+                calendarHTML += '<div>' + dayCounter + '</div>';
+                dayCounter++;
+            }
+
+            calendarHTML += '</div>';
+            document.getElementById('calendar').innerHTML = calendarHTML;
+            highlightToday();
+        }
+
+        // Bugün olan günü vurgulama
+        function highlightToday() {
+            const date = new Date();
+            const today = date.getDate();
+            const days = document.querySelectorAll('.calendar div');
+            days.forEach(day => {
+                if (parseInt(day.innerHTML) === today) {
+                    day.classList.add('today');
+                }
+            });
+        }
+
+        // API anahtarınızı buraya ekleyin
+        const apiKey = 'e74d3a5e0545b3893c3cb0ed56544c3d'; // Buraya kendi API anahtarınızı ekleyin
+
+        // Köyün sabit enlem ve boylam bilgileri (Büyükmahal Köyü'nün koordinatları)
+        const latitude = 39.954651;  // Enlem
+        const longitude = 34.948051;  // Boylam
+
+        // OpenWeatherMap API'ye istek göndermek
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=tr`;
+
+        function loadWeather() {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let forecast = data.list.slice(0, 5);  // 5 günlük tahmin almak için
+                    let weatherInfo = '<ul>';
+                    
+                    forecast.forEach(item => {
+                        const date = new Date(item.dt * 1000);  // Unix timestamp'ı dönüştürme
+                        const temperature = item.main.temp;
+                        const weatherCondition = item.weather[0].description;
+                        
+                        weatherInfo += `<li>${date.toLocaleDateString('tr-TR')} - ${temperature}°C - ${weatherCondition}</li>`;
+                    });
+
+                    weatherInfo += '</ul>';
+                    document.getElementById('weather').innerHTML = weatherInfo;
+                })
+                .catch(error => {
+                    console.error('Hata:', error);
+                    document.getElementById('weather').innerHTML = "Hava durumu alınamadı.";
+                });
+        }
+
+        loadCalendar();
+        loadWeather();
     </script>
 </body>
 </html>
