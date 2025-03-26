@@ -79,39 +79,57 @@
             width: 100px;
             height: auto;
         }
-        /* Hamburger Menü Stili */
-        .hamburger {
-            display: none;
-            font-size: 32px;
-            cursor: pointer;
-            color: white;
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* Haftanın 7 günü için 7 eşit sütun */
+            gap: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #fff;
         }
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                position: absolute;
-                left: -100%;
-                transition: left 0.3s;
-            }
-            .sidebar.active {
-                left: 0;
-            }
-            .hamburger {
-                display: block;
-                position: absolute;
-                top: 20px;
-                left: 20px;
-            }
-            .container {
-                width: 100%;
-                margin-left: 0;
-            }
+
+        .calendar div {
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .calendar div:hover {
+            background-color: #e0e0e0;
+        }
+
+        .calendar .today {
+            background-color: #ffcc00; /* Bugünü vurgulamak için sarı renk */
+            font-weight: bold;
+        }
+
+        .calendar .day-name {
+            font-weight: bold;
+            background-color: #292424;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .right-sidebar {
+            width: 250px;
+            background: #292424;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            padding-bottom: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="hamburger" id="hamburger">☰</div>
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
         <ul>
             <li><a href="index.html">🏠 Ana Sayfa</a></li>
             <li><a href="ürünler.html">🛒 Ürünler</a></li>
@@ -129,52 +147,21 @@
         </div>
         <div class="content">
             <h2>Hoş Geldiniz</h2>
-            <p>ATATÜR'ÜN GENÇLİĞE HİTABESİ<br>Ey Türk Gençliği!<br>
-                Birinci vazifen, Türk istiklâlini, Türk Cumhuriyetini, ilelebet,<br>muhafaza ve müdafaa etmektir.<br> <br>
-                Mevcudiyetinin ve istikbalinin yegâne temeli budur.
-                Bu temel, senin, en kıymetli hazinendir. İstikbalde dahi, seni bu hazineden mahrum etmek isteyecek, 
-                dahilî ve haricî bedhahların olacaktır. Bir gün, İstiklâl ve Cumhuriyeti müdafaa mecburiyetine düşersen, 
-                vazifeye atılmak için, içinde bulunacağın vaziyetin imkân ve şerâitini düşünmeyeceksin! Bu imkân ve şerâit
-                , çok nâmüsait bir mahiyette tezahür edebilir. İstiklâl ve Cumhuriyetine kastedecek düşmanlar, 
-                bütün dünyada emsali görülmemiş bir galibiyetin mümessili olabilirler. Cebren ve hile ile aziz vatanın, bütün kaleleri zaptedilmiş,
-                bütün tersanelerine girilmiş, bütün orduları dağıtılmış ve memleketin her köşesi bilfiil işgal edilmiş olabilir. Bütün bu şerâitten 
-                daha elîm ve daha vahim olmak üzere, memleketin dahilinde, iktidara sahip olanlar gaflet ve dalâlet ve hattâ hıyanet içinde bulunabilirler. 
-                Hattâ bu iktidar sahipleri şahsî menfaatlerini, müstevlilerin siyasi emelleriyle tevhit edebilirler. Millet, fakr ü zaruret içinde harap ve 
-                bîtap düşmüş olabilir..</p>
+            <p>Mustafa Kemal Atatürk, Türk milletinin bağımsızlık mücadelesini simgeleyen ve Türkiye Cumhuriyeti'nin kurucusu olan büyük bir liderdir.</p>
         </div>
         <div class="footer">
             <img src="img/sertansalmanlogo.png" alt="Kendi Logom">
         </div>
-         </div>
+    </div>
+
     <div class="right-sidebar">
         <h3>📅 Takvim</h3>
         <div id="calendar"></div>
-        <h3>🌤️ Hava Durumu</h3>
-        <div id="weather">Hava durumu yükleniyor...</div>
     </div>
 
     <script>
-        // Basit takvim oluşturma
-        function loadCalendar() {
-            const date = new Date();
-            document.getElementById('calendar').innerHTML = date.toLocaleDateString('tr-TR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        }
-
-        // Hava durumu API verileri (dummy data)
-        function loadWeather() {
-            document.getElementById('weather').innerHTML = "🌞 20°C - Güneşli";
-        }
-
-
-    </div>
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const sidebar = document.getElementById('sidebar');
-
-        hamburger.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
+        loadCalendar();
+        highlightToday();
     </script>
 </body>
 </html>
-
