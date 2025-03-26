@@ -13,7 +13,7 @@
         }
         .sidebar {
             width: 200px;
-            background: #292424;
+            background: rgba(254, 67, 5, 0.919);
             color: white;
             padding: 20px;
             height: 100vh;
@@ -80,52 +80,37 @@
             height: auto;
         }
         .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr); /* Haftanın 7 günü için 7 eşit sütun */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
-            padding: 10px;
-            margin-top: 10px;
-            background-color: #fff;
-        }
-
-        .calendar div {
-            text-align: center;
-            padding: 15px;
-            border-radius: 5px;
-            font-size: 18px;
-            background-color: #f0f0f0;
-            transition: background-color 0.3s ease;
-        }
-
-        .calendar div:hover {
-            background-color: #e0e0e0;
-        }
-
-        .calendar .today {
-            background-color: #ffcc00; /* Bugünü vurgulamak için sarı renk */
-            font-weight: bold;
-        }
-
-        .calendar .day-name {
-            font-weight: bold;
-            background-color: #292424;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .right-sidebar {
-            width: 250px;
-            background: #292424;
-            color: white;
             padding: 20px;
-            position: fixed;
-            right: 0;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            padding-bottom: 50px;
         }
+        .calendar div {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .today {
+            background: #ffcc00;
+        }
+        .right-sidebar {
+    width: 250px;
+    background: #f56505;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh; /* Panelin yüksekliğini ekran boyutuna göre ayarlıyoruz */
+    overflow-y: auto; /* İçerik fazla olduğunda kaydırma çubuğu eklenir */
+    padding-bottom: 50px; /* Alt kısmına biraz boşluk ekleyebiliriz */
+}
     </style>
 </head>
 <body>
@@ -154,8 +139,7 @@
         </div>
     </div>
 
-        <div class="right-sidebar">
-   <div class="right-sidebar">
+    <div class="right-sidebar">
         <h3>📅 Takvim</h3>
         <div id="calendar"></div>
         <h3>🌤️ Hava Durumu</h3>
