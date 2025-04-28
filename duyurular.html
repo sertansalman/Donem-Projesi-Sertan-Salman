@@ -125,10 +125,43 @@
         </div>
     </div>
 
-    <div class="right-panel">
-        <h3>ATATÜRK</h3>
-        <p>"“Benim naçiz vücudum elbet bir gün toprak olacaktır, ancak Türkiye Cumhuriyeti ilelebet payidar kalacaktır."
-         </p>
+   <div class="right-panel">
+    <h3>Son Dakika Haberleri</h3>
+    <div id="haberListesi"></div>
+</div>
+
+<script>
+    async function haberleriGetir() {
+        const url = 'https://api.rss2json.com/v1/api.json?rss_url=https://www.sozcu.com.tr/rss/son-dakika.xml';
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const haberListesi = document.getElementById('haberListesi');
+
+            data.items.slice(0, 5).forEach(haber => {
+                const haberDiv = document.createElement('div');
+                haberDiv.style.marginBottom = "20px";
+                haberDiv.style.borderBottom = "1px solid #ccc";
+                haberDiv.style.paddingBottom = "10px";
+
+                haberDiv.innerHTML = `
+                    <a href="${haber.link}" target="_blank" style="font-weight:bold; color:#b71c1c; text-decoration:none;">
+                        ${haber.title}
+                    </a>
+                    <p style="font-size: 14px; color: #333; margin-top: 5px;">
+                        ${haber.description.slice(0, 100)}...
+                    </p>
+                `;
+
+                haberListesi.appendChild(haberDiv);
+            });
+        } catch (error) {
+            console.error('Haberler alınamadı:', error);
+        }
+    }
+
+    haberleriGetir();
+</script>
     </div>
 </body>
 </html>
